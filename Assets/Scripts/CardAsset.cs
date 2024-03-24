@@ -20,4 +20,6 @@ public class CardAsset : ScriptableObject
     get => _color;
     set => _color = value;
   }
+
+  public GameObject Sprite => _sprite;
 }

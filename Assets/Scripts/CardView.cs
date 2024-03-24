@@ -4,17 +4,19 @@ public class CardView : MonoBehaviour
 {
   [SerializeField] private GameObject _sprite;
   [SerializeField] private Vector2 _center;
+  private GameObject _back;
 
   public CardInstance CardInstance { get; private set; }
 
   public void Init(CardInstance cardInstance)
   {
     CardInstance = cardInstance;
+    (_back = Instantiate(_sprite, transform, false)).SetActive(false);
   }
 
   public void Rotate(bool up)
   {
-    _sprite.SetActive(up);
+    _back.SetActive(!up);
   }
 
   public void PlayCard()

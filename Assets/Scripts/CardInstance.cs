@@ -1,13 +1,14 @@
 ﻿public class CardInstance
 {
-  private CardAsset _cardAsset;
-  public int LayoutId;
   public int CardPosition;
+  public int LayoutId;
 
   public CardInstance(CardAsset cardAsset)
   {
-    _cardAsset = cardAsset;
+    CardAsset = cardAsset;
   }
+
+  public CardAsset CardAsset { get; }
 
   public void MoveToLayout(int layoutId)
   {
