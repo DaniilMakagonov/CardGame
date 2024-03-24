@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CardGame
@@ -13,7 +14,7 @@ public class CardGame
     private CardGame() {}
 
     private Dictionary<CardInstance, CardView> _dictionary = new();
-    public List<CardAsset> StartCardAssets = new();
+    private List<CardAsset> StartCardAssets = new();
     private GameObject _prefab;
 
     public void InitPrefab(GameObject prefab)
@@ -40,7 +41,16 @@ public class CardGame
     {
         for (int i = 0; i < StartCardAssets.Count; ++i)
         {
-            CreateCard(StartCardAssets[i], i % 2);
+            CreateCard(StartCardAssets[i], i % 3);
         }
+    }
+
+    public List<CardView> GetCardsInLayout(int layoutId)
+    {
+        return (
+            from cardInstance in _dictionary.Keys 
+            where cardInstance.LayoutId == layoutId 
+            select _dictionary[cardInstance]
+            ).ToList();
     }
 }
