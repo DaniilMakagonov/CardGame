@@ -7,7 +7,7 @@ public class CardAsset : ScriptableObject
 
   [SerializeField] private Color _color;
 
-  [SerializeField] private Sprite _sprite;
+  [SerializeField] private GameObject _sprite;
 
   public string CardName
   {

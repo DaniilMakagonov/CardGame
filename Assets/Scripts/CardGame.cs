@@ -14,8 +14,9 @@ public class CardGame
     private CardGame() {}
 
     private Dictionary<CardInstance, CardView> _dictionary = new();
-    private List<CardAsset> StartCardAssets = new();
+    public List<CardAsset> StartCardAssets;
     private GameObject _prefab;
+    public int HandCapacity = 3;
 
     public void InitPrefab(GameObject prefab)
     {
@@ -39,9 +40,13 @@ public class CardGame
 
     public void StartGame()
     {
-        for (int i = 0; i < StartCardAssets.Count; ++i)
+
+        for (int j = 0; j < 3; j++)
         {
-            CreateCard(StartCardAssets[i], i % 3);
+            for (int i = 0; i < StartCardAssets.Count; ++i)
+            {
+                CreateCard(StartCardAssets[i], i % 2);
+            }   
         }
     }
 
